@@ -140,6 +140,7 @@ export default function Detail() {
               </div>
               <button
                 onClick={openModal}
+                data-cy="todo-add-button"
                 className="bg-primary text-white font-semibold min-w-[150px] px-5 py-3 w-fit rounded-full disabled:opacity-50 flex items-center justify-center"
               >
                 <Plus className="mr-2" />
@@ -191,6 +192,7 @@ export default function Detail() {
                 </label>
                 <input
                   value={form.title}
+                  data-cy="modal-add-name-input"
                   onChange={(e) => setForm({ ...form, title: e.target.value })}
                   type="text"
                   className="w-full outline-none border-2 rounded-md px-4 h-[52px] focus:border-blue-500 mt-2"
@@ -203,6 +205,7 @@ export default function Detail() {
                   PRIORITY
                 </label>
                 <ReactSelect
+                  data-cy="modal-add-priority-dropdown"
                   options={priorityOptions}
                   classNames={{
                     container: () => "mt-2 w-[205px]",
@@ -216,6 +219,7 @@ export default function Detail() {
             </div>
             <div className="px-8 py-6 border-t flex justify-end">
               <button
+                data-cy="modal-add-save-button"
                 disabled={isSaving || form.title === ""}
                 onClick={saveTodoItem}
                 className="bg-primary text-white font-semibold min-w-[150px] px-5 py-3 w-fit rounded-full disabled:opacity-50 flex items-center justify-center"

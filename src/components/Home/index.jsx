@@ -36,12 +36,13 @@ export default function Home() {
     }
   };
 
-  const deleteActivityGroup = async ({ id, setDeleting, closeModal }) => {
+  const deleteActivityGroup = async ({ id, setDeleting, closeModal, showAlert }) => {
     setDeleting(true);
     try {
       await makeRequest.delete(`/activity-groups/${id}`);
       closeModal();
       getActivityGroup();
+      showAlert()
     } catch (error) {
       console.log(error);
     } finally {
@@ -58,6 +59,7 @@ export default function Home() {
         <div className="flex justify-between items-center h-[150px]">
           <h1 className="text-4xl font-bold">Activity</h1>
           <button
+            data-cy="activity-add-button"
             disabled={isLoading}
             onClick={addActivityGroup}
             className="bg-primary text-white font-semibold min-w-[150px] px-5 py-3 w-fit rounded-full disabled:opacity-50 flex items-center justify-center"
@@ -77,7 +79,10 @@ export default function Home() {
         {!activityGroups ? (
           <SpinnerCenter />
         ) : activityGroups?.length ? (
-          <div className="grid grid-cols-4 gap-5 pb-10">
+          <div
+            data-cy="activity-list"
+            className="grid grid-cols-4 gap-5 pb-10"
+          >
             {activityGroups?.map((activity) => (
               <Activity
                 title={activity.title}
@@ -88,7 +93,11 @@ export default function Home() {
             ))}
           </div>
         ) : (
-          <div onClick={addActivityGroup} className="flex justify-center pb-10">
+          <div
+            data-cy="activity-empty-state"
+            onClick={addActivityGroup}
+            className="flex justify-center pb-10"
+          >
             <img
               alt="activity-empty"
               src="/activity-empty-state.svg"

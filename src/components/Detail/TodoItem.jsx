@@ -60,6 +60,7 @@ export default function TodoItem({
       className="h-[80px] w-full bg-white flex items-center px-7 rounded-xl shadow-lg"
     >
       <input
+        data-cy="todo-item-checkbox"
         type="checkbox"
         className="mr-5 w-5 aspect-square"
         checked={isActive === 1 ? false : true}
@@ -74,6 +75,7 @@ export default function TodoItem({
         )}
       ></div>
       <h2
+        data-cy="todo-title"
         className={clsx(
           "text-lg font-medium flex gap-5 items-center",
           !isActive && "line-through"
@@ -88,6 +90,7 @@ export default function TodoItem({
         </button>
       </h2>
       <button
+        data-cy="todo-item-delete-button"
         onClick={openModal}
         className="ml-auto text-gray-500 cursor-pointer"
       >
@@ -116,6 +119,7 @@ export default function TodoItem({
               Batal
             </button>
             <button
+              data-cy="modal-delete-confirm-button"
               disabled={deleting}
               onClick={() => onDelete({ id, setDeleting, closeModal })}
               className="bg-secondary text-white font-semibold min-w-[150px] px-5 py-3 w-fit rounded-full disabled:opacity-50 flex items-center justify-center"
