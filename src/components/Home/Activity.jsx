@@ -41,7 +41,7 @@ export default function Activity({ title, date, onDelete, id }) {
         className="h-full w-full cursor-pointer"
         onClick={() => navigate(`/detail/${id}`)}
       >
-        <h1 data-cy="activity-title" className="text-lg font-bold">
+        <h1 data-cy="activity-item-title" className="text-lg font-bold">
           {title}
         </h1>
       </div>
