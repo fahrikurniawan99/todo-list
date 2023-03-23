@@ -41,7 +41,7 @@ export default function Activity({ title, date, onDelete, id }) {
         className="h-full w-full cursor-pointer"
         onClick={() => navigate(`/detail/${id}`)}
       >
-        <h1 data-cy="activity-item-title" className="text-lg font-bold">
+        <h1 data-cy="activity-title" className="text-lg font-bold">
           {title}
         </h1>
       </div>
@@ -58,7 +58,7 @@ export default function Activity({ title, date, onDelete, id }) {
           size={22}
           onClick={openModal}
         />
-        <Modal isOpen={isOpen} onClose={closeModal}>
+        <Modal isOpen={isOpen} onClose={closeModal} data-cy="modal-delete">
           <div className="max-w-[490px] w-[90%] bg-white h-[355px] rounded-xl">
             <AlertTriangle className="mx-auto mt-8 text-secondary" size={70} />
             <p className="font-medium text-lg px-14 text-center my-10">

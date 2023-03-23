@@ -1,10 +1,10 @@
 import clsx from "clsx";
 import React from "react";
 
-export default function Modal({ children, isOpen, onClose }) {
+export default function Modal({ children, isOpen, onClose, ...props }) {
   return (
     <div
-      data-cy="modal"
+      {...props}
       className={clsx(
         "fixed inset-0 h-screen w-full flex justify-center items-center z-[999]",
         !isOpen ? "hidden" : "block"
